@@ -29,6 +29,7 @@ class AccountFiscalYear(models.Model):
         required=True,
         default=lambda self: self.env.company,
     )
+    
 
     @api.constrains("date_from", "date_to", "company_id")
     def _check_dates(self):
@@ -56,7 +57,7 @@ class AccountFiscalYear(models.Model):
                         overlapping_fy=overlapping_fy.display_name,
                     )
                 )
-
+    
     def _get_overlapping_domain(self):
         """Get domain for finding fiscal years overlapping with self.
 
